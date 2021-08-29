@@ -30,26 +30,25 @@ let autoUpgrades = {
 
 let autoUpgradesValue = 0
 
+let bugClick = document.querySelector('#bug-click');
+let imgContainer = document.querySelector('#click-img')
 
 function mine() {
     resource += clickValue
     document.getElementById('click-img').classList.toggle('img-shake')
     drawTotal()
-    document.onclick = () => addClickBugEffect(event);
 }
 
-function addClickBugEffect(e) {
-    const bugClick = document.createElement('div');
-
-    bugClick.className = 'ripple';
-    document.body.appendChild(bugClick);
-
-    bugClick.style.left = `${e.clientX}px`;
-    bugClick.style.top = `${e.clientY}px`;
-
-    bugClick.style.animation = "ripple-effect .4s linear";
-    bugClick.onanimationend = () => document.body.removeChild(bugClick)
-}
+imgContainer.addEventListener("click", function(event) {
+    var xPosition = event.clientX - imgContainer.getBoundingClientRect().left - (bugClick.clientWidth / 2);
+    var yPosition = event.clientY - imgContainer.getBoundingClientRect().top - (bugClick.clientHeight / 2);
+    // in case of a wide border, the boarder-width needs to be considered in the formula above
+    bugClick.style.left = xPosition + "px";
+    bugClick.style.top = yPosition + "px";
+    document.getElementById('bug-click').classList.add('fade-out')
+    document.getElementById('bugs-clicked').innerText = "+" + clickValue
+    document.onanimationend
+});
 
 function drawTotal() {
     let total = resource
@@ -152,6 +151,7 @@ function drawAUpgradeIncrease(index) {
 
 function collectAutoUpgrades() {
     resource += autoUpgradesValue
+    document.getElementById('auto-bugs-clicked').innerText = '+' + autoUpgradesValue
     drawTotal()
 }
 
