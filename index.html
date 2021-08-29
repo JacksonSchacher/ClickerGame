@@ -8,25 +8,99 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+
+
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <h1>Checkpoint 2</h1>
+<body oncontextmenu="return false;" class="container-fluid">
+    <header class="row text-light">
+        <div class="col justify-content-start">
+            <h3>Bugs Fixed:
+                <span id='current-total'></span>
+                <i class="mdi mdi-bug-outline"></i>
+            </h3>
+        </div>
+    </header>
+    <main>
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <img onclick="mine()" id="click-img" class="click-img" src="./assets/apple-2.png">
+            </div>
+        </div>
+        <div class="row justify-content-around text-center">
+            <div class="col-md-3">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed upgrade-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Click Upgrades:
+                  </button>
+                            </h2>
+                        </div>
 
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <h4>Type Checker:
+                                    <span id='cUpgrade1'><!-- click upgrade quantity --></span>
 
+                                    <button type="button" onclick="buyClickUpgrade('cUpgrade1')">Click +1</button></h4>
+                                <cite> Added "Features": <span id="cUpgrade1-price">5</span><i class="mdi mdi-bug-outline"></i></cite>
+                                <h4>Exception Handler:
+                                    <span id='cUpgrade2'><!-- click upgrade quantity --></span>
 
+                                    <button type="button" onclick="buyClickUpgrade('cUpgrade2')">Click +5</button></h4>
+                                <cite> Added "Features": <span id="cUpgrade2-price">10</span><i class="mdi mdi-bug-outline"></i></cite>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed upgrade-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Auto Upgrades:
+                  </button>
+                            </h2>
+                        </div>
 
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <h4>Intern:
+                                    <span id='aUpgrade1'><!-- auto upgrade quantity --></span>
 
+                                    <button type="button" onclick="buyAutoUpgrade('aUpgrade1')">+10 per second</button></h4>
+                                <cite> Cost: <span id="aUpgrade1-price">50</span><i class="mdi mdi-bug-outline"></i></cite>
+                                <h4>Debug Engineer:
+                                    <span id='aUpgrade2'><!-- auto upgrade quantity --></span>
 
-
-
-
-
+                                    <button type="button" onclick="buyAutoUpgrade('aUpgrade2')">+50 per second</button></h4>
+                                <cite> Cost: <span id="aUpgrade2-price">100</span><i class="mdi mdi-bug-outline"></i></cite>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="row text-center">
+            <div class="col bg-dark"></div>
+        </div>
+    </footer>
 
 
     <script src="./app/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
