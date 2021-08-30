@@ -1,4 +1,4 @@
-let resource = 100;
+let resource = 0;
 
 let clickValue = 1;
 
@@ -61,9 +61,26 @@ function drawTotal() {
     CURR_TOTAL_ELEM.innerText = total
 
     achievement()
+    buttonIsClickable()
+
 }
 
-
+function buttonIsClickable() {
+    for (const upgrade in clickUpgrades) {
+        if (resource >= clickUpgrades[upgrade].price) {
+            document.getElementById(upgrade + "-btn").removeAttribute("disabled")
+        } else {
+            document.getElementById(upgrade + "-btn").setAttribute("disabled", "")
+        }
+    }
+    for (const upgrade in autoUpgrades) {
+        if (resource >= autoUpgrades[upgrade].price) {
+            document.getElementById(upgrade + "-btn").removeAttribute("disabled")
+        } else {
+            document.getElementById(upgrade + "-btn").setAttribute("disabled", "")
+        }
+    }
+}
 
 function buyClickUpgrade(index) {
     let cUpgradeIndex = clickUpgrades[index]
@@ -190,12 +207,15 @@ async function achievement() {
         Swal.fire({
             toast: true,
             position: 'top-right',
+            icon: "success",
             iconColor: 'white',
+            title: 'Debug Intern',
+            text: 'Squashed 100 bugs!!',
             customClass: {
                 popup: 'colored-toast'
             },
             showConfirmButton: false,
-            timer: 1500,
+            timer: 4500,
             timerProgressBar: true
         })
     }
@@ -204,12 +224,15 @@ async function achievement() {
         Swal.fire({
             toast: true,
             position: 'top-right',
+            icon: "success",
             iconColor: 'white',
+            title: 'Junior Debug Engineer',
+            text: 'Squashed 1000 bugs!!',
             customClass: {
                 popup: 'colored-toast'
             },
             showConfirmButton: false,
-            timer: 1500,
+            timer: 4500,
             timerProgressBar: true
         })
     }
@@ -218,12 +241,15 @@ async function achievement() {
         Swal.fire({
             toast: true,
             position: 'top-right',
+            icon: "success",
             iconColor: 'white',
+            title: 'Senior Bug Killer',
+            text: 'Squashed 10000 bugs!!',
             customClass: {
                 popup: 'colored-toast'
             },
             showConfirmButton: false,
-            timer: 1500,
+            timer: 4500,
             timerProgressBar: true
         })
     }
@@ -232,12 +258,15 @@ async function achievement() {
         Swal.fire({
             toast: true,
             position: 'top-right',
+            icon: "success",
             iconColor: 'white',
+            title: 'EXTERMINATOR',
+            text: 'Squashed 100000 bugs!!',
             customClass: {
                 popup: 'colored-toast'
             },
             showConfirmButton: false,
-            timer: 1500,
+            timer: 4500,
             timerProgressBar: true
         })
     }
@@ -246,19 +275,18 @@ async function achievement() {
         Swal.fire({
             toast: true,
             position: 'top-right',
+            icon: "success",
             iconColor: 'white',
+            title: 'Bug Destroyer',
+            text: 'Squashed 1000000 bugs!!',
             customClass: {
                 popup: 'colored-toast'
             },
             showConfirmButton: false,
-            timer: 1500,
+            timer: 4500,
             timerProgressBar: true
         })
     }
-    await Toast.fire({
-        icon: 'success',
-        title: 'Success'
-    })
 }
 // prevent image dragging
 document.getElementById('click-img').ondragstart = function() {
