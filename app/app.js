@@ -38,16 +38,20 @@ function mine() {
     document.getElementById('click-img').classList.toggle('img-shake')
     drawTotal()
 }
-
+const bugClicked = document.getElementById('bug-click')
 imgContainer.addEventListener("click", function(event) {
     var xPosition = event.clientX - imgContainer.getBoundingClientRect().left - (bugClick.clientWidth / 2);
     var yPosition = event.clientY - imgContainer.getBoundingClientRect().top - (bugClick.clientHeight / 2);
     // in case of a wide border, the boarder-width needs to be considered in the formula above
     bugClick.style.left = xPosition + "px";
     bugClick.style.top = yPosition + "px";
-    document.getElementById('bug-click').classList.add('fade-out')
+    bugClicked.classList.remove('hidden')
+    bugClicked.classList.add('fade-out')
     document.getElementById('bugs-clicked').innerText = "+" + clickValue
-    document.onanimationend
+    setTimeout(function() {
+        bugClicked.classList.add('hidden'),
+            bugClicked.classList.remove('fade-out')
+    }, 500);
 });
 
 function drawTotal() {
@@ -150,13 +154,16 @@ function drawAUpgradeIncrease(index) {
 }
 
 function collectAutoUpgrades() {
+    document.getElementById('auto-bugs-clicked').classList.remove('hidden')
     resource += autoUpgradesValue
     document.getElementById('auto-bugs-clicked').innerText = '+' + autoUpgradesValue
+    setTimeout(function() { document.getElementById('auto-bugs-clicked').classList.add('hidden') }, 1000)
     drawTotal()
 }
 
 function autoInterval() {
     collectInterval = setInterval(collectAutoUpgrades, 3000);
+
 }
 
 function muteButton() {
@@ -177,7 +184,7 @@ var executed10000 = true
 var executed100000 = true
 var executed1000000 = true
 
-function achievement() {
+async function achievement() {
     if (resource >= 100 && executed100) {
         executed100 = false;
         Swal.fire({
@@ -248,6 +255,10 @@ function achievement() {
             timerProgressBar: true
         })
     }
+    await Toast.fire({
+        icon: 'success',
+        title: 'Success'
+    })
 }
 // prevent image dragging
 document.getElementById('click-img').ondragstart = function() {

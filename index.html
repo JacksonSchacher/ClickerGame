@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
 
 
@@ -19,28 +20,30 @@
 </head>
 
 <body oncontextmenu="return false;" class="container-fluid">
-    <header class="row text-light">
+    <header class="row text-light mt-2">
         <div class="col justify-content-start">
-            <h3>Bugs Fixed:
+            <h2>Bugs Fixed:
                 <span id='current-total'></span>
                 <i class="mdi mdi-bug-outline"></i>
-            </h3>
+            </h2>
+            <span id="auto-bugs-clicked"></span>
         </div>
     </header>
     <main>
         <div class="row justify-content-center">
-            <div class="col-lg-4">
+            <div class=" col-sm-12 col-lg-4 mb-4">
+                <i id="bug-click" class="mdi mdi-bug-outline"><span id="bugs-clicked"></span></i>
                 <img onclick="mine()" id="click-img" class="click-img" src="./assets/apple-2.png">
             </div>
         </div>
-        <div class="row justify-content-around text-center">
-            <div class="col-md-3">
+        <div class="row justify-content-around text-center button-div">
+            <div class="col-md-2">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed upgrade-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Click Upgrades:
+                            Click </br> Upgrades:
                   </button>
                             </h2>
                         </div>
@@ -68,7 +71,7 @@
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed upgrade-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Auto Upgrades:
+                            Auto </br> Upgrades:
                   </button>
                             </h2>
                         </div>
@@ -94,7 +97,9 @@
     </main>
     <footer>
         <div class="row text-center">
-            <div class="col bg-dark"></div>
+            <div class="col bg-dark">
+
+            </div>
         </div>
     </footer>
 

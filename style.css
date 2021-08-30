@@ -3,8 +3,8 @@ body {
     background-image: url(./assets/bg-img.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: top center;
-    background-color: black;
+    background-position: bottom center;
+    background-color: #245b57;
 }
 
 .click-img {
@@ -15,20 +15,60 @@ body {
 .accordion {
     position: absolute;
     top: 48vh;
-    margin: 0 3em;
+}
+
+.card-header {
+    background-color: #333333;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .upgrade-btn {
-    padding: 0 6rem;
+    padding: 0 5rem;
+    margin: auto;
 }
 
-.ripple {
-    width: 10px;
-    height: 10px;
-    background-color: transparent;
-    position: fixed;
-    border-radius: 50%;
-    border: 1px solid $ffffff59;
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+}
+
+.colored-toast .swal2-title {
+    color: white;
+}
+
+.colored-toast .swal2-close {
+    color: white;
+}
+
+.colored-toast .swal2-content {
+    color: white;
+}
+
+#bug-click {
+    z-index: 1000;
+    position: relative;
+    font-size: 2.5rem;
+    left: 50px;
+    top: 50px;
+    color: darkorange;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.fade-out {
+    animation: fadeOut ease 1s;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        top: 50px;
+    }
+    100% {
+        opacity: 0;
+        top: 0px;
+    }
 }
 
 .img-shake {
@@ -36,13 +76,6 @@ body {
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
-}
-
-@keyframes ripple-effect {
-    to {
-        transform: scale(15);
-        opacity: 0.01;
-    }
 }
 
 @keyframes shake {
@@ -62,5 +95,25 @@ body {
     40%,
     60% {
         transform: translate3d(4px, 0, 0);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .click-img {
+        width: 60vw;
+        height: auto;
+        margin-top: 8vh;
+    }
+    .accordion {
+        position: initial;
+        top: auto;
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .button-div {
+        margin-left: -14rem;
+        margin-right: -19rem;
     }
 }
